@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FF7A1A">
+  <meta name="description" content="TODO: replace with the invitation description.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="manh tốt nghiệp rồi">
+  <meta property="og:description" content="TODO: replace with the invitation description.">
+  <!-- TODO: Replace the example absolute URL with the deployed og.webp URL. -->
+  <meta property="og:image" content="https://example.github.io/manh-graduate/assets/og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="manh tốt nghiệp rồi">
+  <meta name="twitter:description" content="TODO: replace with the invitation description.">
+  <meta name="twitter:image" content="https://example.github.io/manh-graduate/assets/og.webp">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <title>manh tốt nghiệp rồi</title>
+</head>
+<body>
+  <main id="stage" data-i18n-aria="homeRegion" aria-label="">
+    <section class="home-layout" data-i18n-aria="homeRegion" aria-label="">
+      <header class="home-heading">
+        <h1 class="home-title"></h1>
+        <p class="home-subtitle" data-i18n="homeSubtitle"></p>
+      </header>
+      <button class="character-button" id="character-button" type="button" data-i18n-aria="characterAlt" aria-label="">
+        <span class="character-ground" aria-hidden="true"></span>
+        <span class="character-art" id="home-character" aria-hidden="true"></span>
+      </button>
+      <nav class="home-menu" id="home-menu" data-i18n-aria="mainMenu" aria-label=""></nav>
+      <div class="language-switch" role="group" data-i18n-aria="languageGroup" aria-label="">
+        <button class="pixel-button language-button" type="button" data-language="vi" aria-pressed="true">VI</button>
+        <button class="pixel-button language-button" type="button" data-language="en" aria-pressed="false">EN</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="site-dialog" id="recap-dialog" aria-labelledby="recap-title">
+    <div class="dialog-surface">
+      <header class="dialog-header"><button class="pixel-button back-button" type="button" data-close data-i18n="back"></button></header>
+      <div class="dialog-body">
+        <h1 id="recap-title" data-i18n="recapTitle"></h1>
+        <div class="carousel" id="journey-carousel" aria-roledescription="carousel">
+          <div class="carousel-track" id="journey-track"></div>
+          <div class="carousel-controls">
+            <button class="pixel-button icon-button" id="journey-prev" type="button" data-i18n="previous" data-i18n-aria="previousPhoto" aria-label=""></button>
+            <div class="carousel-dots" id="journey-dots"></div>
+            <button class="pixel-button icon-button" id="journey-next" type="button" data-i18n="next" data-i18n-aria="nextPhoto" aria-label=""></button>
+          </div>
+          <p class="carousel-counter" id="journey-counter" aria-live="polite"></p>
+        </div>
+        <div class="dialog-actions">
+          <button class="pixel-button primary-button" type="button" data-open="guest" data-i18n="recapInvitation"></button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="site-dialog" id="guest-dialog" data-i18n-aria="guestDialog" aria-label="">
+    <div class="dialog-surface">
+      <header class="dialog-header"><button class="pixel-button back-button" type="button" data-close data-i18n="back"></button></header>
+      <form class="dialog-body guest-form" id="guest-form">
+        <label class="guest-name-label" for="guest-name-input" data-i18n="yourName"></label>
+        <input id="guest-name-input" name="guestName" type="text" maxlength="60" autocomplete="name" required data-autofocus>
+        <fieldset class="guest-time-set">
+          <legend data-i18n="chooseTime"></legend>
+          <div class="guest-time-options" id="guest-time-options"></div>
+        </fieldset>
+        <div class="dialog-actions"><button class="pixel-button primary-button" type="submit" data-i18n="continue"></button></div>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog class="site-dialog" id="invitation-dialog" aria-labelledby="invitation-title">
+    <div class="dialog-surface">
+      <header class="dialog-header"><button class="pixel-button back-button" type="button" data-close data-i18n="back"></button></header>
+      <div class="dialog-body invitation-body">
+        <article class="invitation-card pixel-panel" id="invitation-card">
+          <div class="card-ribbon" data-i18n="saveTheDate"></div>
+          <div class="card-character" id="card-character" aria-hidden="true"></div>
+          <p class="card-guest-line card-highlight"><span data-i18n="guestGreeting"></span> <strong id="invitee-display"></strong>,</p>
+          <h1 class="card-degree card-highlight" id="invitation-title" data-i18n="invitationTitle"></h1>
+          <p class="card-name card-highlight" data-config="fullName"></p>
+          <p class="card-invite" data-i18n="invitationLine"></p>
+          <p class="card-detail card-highlight" id="event-date"></p>
+          <p class="card-university" data-config="university"></p>
+          <p class="card-detail card-highlight" id="event-address"></p>
+          <h2 class="card-time-title card-highlight" data-i18n="time"></h2>
+          <div class="time-slots" id="time-slots"></div>
+        </article>
+        <div class="invitation-actions">
+          <button class="pixel-button primary-button" id="download-button" type="button" data-i18n="download"></button>
+          <button class="pixel-button" type="button" data-open="directions" data-i18n="continue"></button>
+          <p class="download-status" id="download-status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="site-dialog" id="directions-dialog" aria-labelledby="directions-title">
+    <div class="dialog-surface">
+      <header class="dialog-header"><button class="pixel-button back-button" type="button" data-close data-i18n="back"></button></header>
+      <div class="dialog-body directions-body">
+        <h1 id="directions-title" data-i18n="directionsTitle"></h1>
+        <section class="direction-section pixel-panel">
+          <h2><span class="number-badge">1</span><span data-i18n="location"></span></h2>
+          <p class="direction-name" data-config="university"></p>
+          <p class="direction-address" id="direction-address"></p>
+          <p class="gate-note" id="gate-note"></p>
+          <a class="pixel-button direction-link" id="maps-link" target="_blank" rel="noopener" data-i18n="mapsLink"></a>
+          <div class="map-embed-frame" id="map-embed-frame"></div>
+        </section>
+        <section class="direction-section pixel-panel">
+          <h2><span class="number-badge">2</span><span data-i18n="driving"></span></h2>
+          <ol class="parking-list" id="parking-list"></ol>
+          <button class="map-image-button pixel-panel" id="campus-map-button" type="button" data-i18n-aria="campusMapAlt" aria-label="">
+            <img id="campus-map" src="assets/vgu-campus-map.webp" alt="" loading="lazy">
+          </button>
+        </section>
+        <!-- <section class="direction-section pixel-panel">
+          <h2><span class="number-badge">3</span><span data-i18n="ride"></span></h2>
+          <p data-i18n="rideLine"></p>
+        </section> -->
+        <div class="dialog-actions"><button class="pixel-button primary-button" type="button" data-home data-i18n="home"></button></div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="site-dialog image-dialog" id="image-dialog" data-i18n-aria="imageViewer" aria-label="">
+    <div class="dialog-surface image-dialog-surface">
+      <header class="dialog-header"><button class="pixel-button back-button" type="button" data-close data-i18n="back"></button></header>
+      <div class="image-viewer" id="image-viewer"><img id="campus-map-large" src="assets/vgu-campus-map.webp" alt="" draggable="false"></div>
+    </div>
+  </dialog>
+
+  <dialog class="site-dialog save-dialog" id="save-dialog" data-i18n-aria="saveImage" aria-label="">
+    <div class="dialog-surface">
+      <header class="dialog-header"><button class="pixel-button back-button" type="button" data-close data-i18n="back"></button></header>
+      <div class="dialog-body save-body">
+        <p data-i18n="longPress"></p>
+        <img id="save-image" alt="">
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
